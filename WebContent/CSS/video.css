@@ -1,0 +1,23 @@
+#videotable {
+    width: 640px;
+    height: 360px;
+    border: 3px solid;
+    
+}
+
+#video-td{
+	width: 640px; 
+	height: 360px;
+}
+
+#video-container {
+   position:absolute; 
+   width:640px; 
+   height:360px;
+   z-index: -1;
+}
+
+
+#dialog{
+	display: none;
+}
