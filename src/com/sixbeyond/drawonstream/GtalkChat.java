@@ -1,4 +1,4 @@
-package com.sixbeyond.drawonstream;
+package com.sixbeyond.drawonstream; 
 
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;

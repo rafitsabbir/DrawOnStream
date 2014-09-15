@@ -19,11 +19,16 @@
     <body  onload="initDraw()">
     
 	<table id="videotable">
-	<tr>
-		<td  id="video-td">
-		<video id="video-container" ></video>
+	<tr width="640px" height="360px">
+		<td  id="video-td" >
 		
-		<canvas id="canvas" width="640px" height="360px" style="position:relative;"></canvas>	    
+		
+		<canvas id="canvas" width="640px" height="360px" style="z-index:2; position:absolute;" ></canvas>
+		<video id="video-container" style="width:640px; height:360px; position:relative;" ></video>
+		
+		
+				
+			    
 		</td>
 	</tr>
 	<tr>
@@ -32,12 +37,14 @@
     	<input type="button" value="clear"  size="30" onclick="erase()" >&nbsp;&nbsp;&nbsp;
     	<input type="button" value="send" id="send"  size="30" onclick="SendData()" >
    		<div id="dialog" >please draw something </div>   
-    	<input type="hidden" id="room-name" value="conference-room"/>
+    	<input type="hidden" id="room-name" value="room1"/>
 		</td>
 	</tr>
 	</table>
     
     
     </body> 
- 
+ 		<!-- worked draw..not video
+		<video style="width:640px; height:360px; position:absolute;" ></video>
+		<canvas id="canvas" width="640px" height="360px" style="z-index:2; position:relative;" ></canvas> -->	  
 </html>

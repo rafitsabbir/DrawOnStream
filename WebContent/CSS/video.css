@@ -10,13 +10,12 @@
 	height: 360px;
 }
 
-#video-container {
+/* #video-container {
    position:absolute; 
    width:640px; 
    height:360px;
-   z-index: -1;
-}
-
+   z-index: -99;
+} */
 
 #dialog{
 	display: none;

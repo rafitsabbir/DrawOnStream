@@ -65,8 +65,7 @@ public class SendData extends HttpServlet {
 
 	public void sendMessage(ArrayList<String> x, ArrayList<String> y) {
 
-		gtalkChat.sendMessage("receiverid123@gmail.com", "x:" + x + " " + "y:"
-				+ y);
+		gtalkChat.sendMessage("receiverid123@gmail.com", x + "&" + y);
 	}
 
 	/**
