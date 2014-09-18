@@ -24,7 +24,7 @@
 		
 		
 		<canvas id="canvas" width="640px" height="360px" style="z-index:2; position:absolute;" ></canvas>
-		<video id="video-container"  ></video>
+		<video id="video-container" width="640px" height="360px" style="position:relative;"></video>
 		
 		
 				
