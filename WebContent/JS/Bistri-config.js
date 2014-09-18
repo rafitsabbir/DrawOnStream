@@ -142,6 +142,8 @@
  				stream/* Object: stream */, pid/* String: user id */) {
  			// remove the stream from the page
  			BistriConference.detachStream(stream);
+ 			window.location.assign(location.href);
+ 			
  		});
 
  		// we connect the user to the signaling server, event "onConnected" is

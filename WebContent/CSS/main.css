@@ -1,0 +1,32 @@
+#videotable {
+	width: 640px;
+	height: 360px;
+	border: 3px solid;
+}
+
+#video-td {
+	width: 640px;
+	height: 360px;
+}
+
+#video-container {
+	position: relative;
+	width: 640px;
+	height: 360px;
+}
+
+#dialog {
+	display: none;
+}
+
+p.pos_fixed {
+	position: fixed;
+	top: 15%;
+	left: 25%;
+}
+
+iframe#mainframe {
+	width: 675px;
+	height: 425px;
+	border: 0px;
+}

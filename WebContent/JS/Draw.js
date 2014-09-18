@@ -109,7 +109,7 @@ function SendData() {
 	if (document.getElementById("send").disabled == false) {
 
 		document.getElementById("send").disabled = true;
-		var xmlhttp;
+		var xmlhttp = null;
 
 		if (window.XMLHttpRequest) {
 			// code for IE7+, Firefox, Chrome, Opera, Safari
