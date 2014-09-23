@@ -8,6 +8,7 @@ var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, x = "
 
 var allPosX = new Array();
 var allPosY = new Array();
+var roomName = "";
 
 function initDraw() {
 
@@ -127,9 +128,10 @@ function SendData() {
 		}
 	}
 	if (allPosX.length != 0 && allPosY.length != 0) {
-
+		roomName = document.querySelector("#room-name").value;
+		console.log(roomName);
 		xmlhttp.open("GET", '/DrawOnStream/senddata?paramX=' + allPosX
-				+ '&paramY=' + allPosY, true);
+				+ '&paramY=' + allPosY + '&roomName=' + roomName, true);
 		xmlhttp.send();
 	} else {
 

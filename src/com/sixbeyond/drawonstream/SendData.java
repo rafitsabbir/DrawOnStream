@@ -21,6 +21,7 @@ public class SendData extends HttpServlet {
 	GtalkChat gtalkChat;
 	String x = "";
 	String y = "";
+	String roomName = "";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -59,13 +60,22 @@ public class SendData extends HttpServlet {
 		}
 		out.println("y:" + posY);
 		out.println("y.length:" + yValue.length);
-
-		sendMessage(posX, posY);
+		
+		roomName = request.getParameter("roomName");
+		out.println("roomName " + roomName);
+		sendMessage(response, roomName, posX, posY);
 	}
 
-	public void sendMessage(ArrayList<String> x, ArrayList<String> y) {
-
-		gtalkChat.sendMessage("receiverid123@gmail.com", x + "&" + y);
+	public void sendMessage(HttpServletResponse response, String roomName, ArrayList<String> x, ArrayList<String> y) {
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		out.println(roomName + x + "&" + y);
+		gtalkChat.sendMessage("receiverid123@gmail.com", roomName + x + "&" + y);
 	}
 
 	/**
