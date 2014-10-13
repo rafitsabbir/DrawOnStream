@@ -17,7 +17,8 @@
   
     </head>
     <body  onload="initDraw()">
-    
+    <table>
+    <tr><td>
 	<table id="videotable">
 	<tr width="640px" height="360px">
 		<td  id="video-td" >
@@ -40,6 +41,24 @@
     	<input type="hidden" id="room-name" value="room1"/>
 		</td>
 	</tr>
+	</table></td>
+	
+	<td width="210px" >
+	<table id="drawingtools"><tr><td>
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawpen" onClick=""/> 
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawpen" onClick="SelectPen()"/>
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="SmallCircle()"/>
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="SmallRect()"/> 
+	
+	
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="MediumCircle()"/> 
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="MediumRect()"/> 
+	
+	
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="LargeCircle()"/> 
+	<img src="../images/images.png" width="90px" height="90px" style="border-style: outset;" id="drawcircle" onClick="LargeRect()"/> 
+	</td></tr></table>
+		
 	</table>
     
     

@@ -9,6 +9,9 @@
 	height: 360px;
 }
 
+#drawingtools {
+	border: 2px solid;
+}
 /* #video-container {
 	position: relative;
 	width: 640px;
@@ -26,7 +29,7 @@ p.pos_fixed {
 }
 
 iframe#mainframe {
-	width: 675px;
-	height: 425px;
+	width: 900px;
+	height: 435px;
 	border: 0px;
 }
