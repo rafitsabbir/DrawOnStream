@@ -4,11 +4,12 @@
 
  */
 
-var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, color = "red", y = 2, dot_flag = false;
+var canvas, ctx, flag = false, prevX = 0, currX = 0, prevY = 0, currY = 0, color = "red", y = 3, dot_flag = false;
 
 var allPosX = new Array();
 var allPosY = new Array();
 var roomName = "";
+var text = "";
 var drawMood;
 var deltaCenter = null;
 var deltaCenterRect = null;
@@ -22,38 +23,50 @@ var paths = [];
 var circleString = "";
 var rectString = "";
 
-function SelectPen() {
-	drawMood = 0;
+function TextMode(id) {
+	drawMood = -1;
+	Border(id);
 }
 
-function SmallCircle() {
+function SelectPen(id) {
+	drawMood = 0;
+	Border(id);
+}
+
+function SmallCircle(id) {
 	this.drawMood = 1;
 	addCircle(200, 200, 25);
+	Border(id);
 }
 
-function MediumCircle() {
+function MediumCircle(id) {
 	this.drawMood = 1;
 	addCircle(200, 200, 50);
+	Border(id);
 }
 
-function LargeCircle() {
+function LargeCircle(id) {
 	this.drawMood = 1;
 	addCircle(200, 200, 100);
+	Border(id);
 }
 
-function SmallRect() {
+function SmallRect(id) {
 	this.drawMood = 2;
 	addRect(1, 1, 100, 100, "#444444");
+	Border(id);
 }
 
-function MediumRect() {
+function MediumRect(id) {
 	this.drawMood = 2;
 	addRect(1, 1, 170, 170, "#444444");
+	Border(id);
 }
 
-function LargeRect() {
+function LargeRect(id) {
 	this.drawMood = 2;
 	addRect(1, 1, 210, 210, "#444444");
+	Border(id);
 }
 
 // Path object to hold data for all drawn path
@@ -109,6 +122,29 @@ function addRect(x, y, w, h, fill) {
 	draw();
 }
 
+function Border(id) {
+
+	if (id == 1) {
+		document.getElementById("sendtext").style.display = "initial";
+		document.getElementById("text").style.display = "initial";
+	} else {
+		document.getElementById("sendtext").style.display = "none";
+		document.getElementById("text").style.display = "none";
+		document.getElementById("text").value = "";
+	}
+
+	for ( var i = 1; i <= 8; i++) {
+		if (id == i) {
+			document.getElementById("" + i).style.border = "1px solid #00adef";
+			// console.log("id inset "+i);
+		} else {
+			// document.getElementById(""+id).style.border = "outset";
+			document.getElementById("" + i).style.border = "1px solid #ababab";
+			// console.log("id outsest "+i);
+		}
+	}
+}
+
 function initDraw() {
 
 	canvas = document.getElementById('canvas');
@@ -131,7 +167,7 @@ function initDraw() {
 	canvas.addEventListener("mouseout", function(e) {
 		findxy('out', e)
 	}, false);
-	/*console.log("draw initialize");*/
+	/* console.log("draw initialize"); */
 }
 
 function writeMessage(canvas, message) {
@@ -168,17 +204,19 @@ function startDraggingRect(e) {
 	var p = new Point(mouseX(e), mouseY(e));
 	var l = boxes.length;
 	for ( var i = 0; i < l; i++) {
-		/*console
-				.log((boxes[i].x < p.x && boxes[i].y < p.y)
-						&& (boxes[i].x + boxes[i].w > p.x && boxes[i].y
-								+ boxes[i].h > p.y));*/
+		/*
+		 * console .log((boxes[i].x < p.x && boxes[i].y < p.y) && (boxes[i].x +
+		 * boxes[i].w > p.x && boxes[i].y + boxes[i].h > p.y));
+		 */
 
 		if ((boxes[i].x < p.x && boxes[i].y < p.y)
 				&& (boxes[i].x + boxes[i].w > p.x && boxes[i].y + boxes[i].h > p.y)) {
 			deltaCenterRect = new Point(p.x - boxes[i].x, p.y - boxes[i].y);
-			/*console.log("px=" + p.x + " py=" + p.y);*/
-			/*console.log(boxes[i].x + " " + boxes[i].y + " " + boxes[i].h + " "
-					+ boxes[i].w);*/
+			/* console.log("px=" + p.x + " py=" + p.y); */
+			/*
+			 * console.log(boxes[i].x + " " + boxes[i].y + " " + boxes[i].h + " " +
+			 * boxes[i].w);
+			 */
 		}
 	}
 
@@ -196,7 +234,7 @@ function draw() {
 		ctx.moveTo(prevX, prevY);
 		ctx.lineTo(currX, currY);
 		ctx.strokeStyle = color;
-		ctx.lineWidth = y;
+		ctx.lineWidth = 3;
 		ctx.stroke();
 		ctx.closePath();
 
@@ -205,12 +243,12 @@ function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		var l = circles.length;
 
-		/*console.log(circles.length);*/
+		/* console.log(circles.length); */
 		for ( var i = 0; i < l; i++) {
 			ctx.beginPath();
 			ctx.arc(circles[i].x, circles[i].y, circles[i].r, 0, 2 * Math.PI,
 					false);
-			/*console.log(circles[i].x);*/
+			/* console.log(circles[i].x); */
 			ctx.strokeStyle = 'red';
 			ctx.stroke();
 			ctx.closePath();
@@ -222,7 +260,7 @@ function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		var l = boxes.length;
 
-		/*console.log(boxes.length)*/;
+		/* console.log(boxes.length) */;
 		for ( var i = 0; i < l; i++) {
 			ctx.beginPath();
 			ctx.rect(boxes[i].x, boxes[i].y, boxes[i].w, boxes[i].h,
@@ -272,7 +310,7 @@ function draw() {
 			 * ctx.moveTo(paths[i-1].x, paths[i-1].y); ctx.lineTo(paths[i].x,
 			 * paths[i].y);
 			 */
-			ctx.arc(paths[i - 1].x, paths[i - 1].y, 2, 0, 2 * Math.PI, false);
+			ctx.arc(paths[i - 1].x, paths[i - 1].y, 0.3, 0, 2 * Math.PI, false);
 			ctx.strokeStyle = color;
 			ctx.lineWidth = y;
 			ctx.stroke();
@@ -294,6 +332,8 @@ function erase() {
 		circleString = 0;
 		rectString = 0;
 		
+		document.getElementById("text").value = "";
+
 		SendData();
 	}
 }
@@ -412,17 +452,18 @@ function SendData() {
 			}
 		}
 	}
-	//if (allPosX.length != 0 && allPosY.length != 0) {
-		roomName = document.querySelector("#room-name").value;
-		xmlhttp.open("GET", '/DrawOnStream/senddata?paramX=' + allPosX
-				+ '&paramY=' + allPosY + '&circles=' + circleString + '&rects='
-				+ rectString + '&roomName=' + roomName, true);
-		xmlhttp.send();
-	//} else {
+	// if (allPosX.length != 0 && allPosY.length != 0) {
+	roomName = document.querySelector("#room-name").value;
+	text = document.querySelector("#text").value;
+	xmlhttp.open("GET", '/sharestream/senddata?paramX=' + allPosX + '&paramY='
+			+ allPosY + '&circles=' + circleString + '&rects=' + rectString
+			+ '&roomName=' + roomName + '&text=' + text, true);
+	xmlhttp.send();
+	// } else {
 
-		//$("#dialog").dialog();
-		//document.getElementById("send").disabled = false;
-	//}
+	// $("#dialog").dialog();
+	// document.getElementById("send").disabled = false;
+	// }
 }
 
 /*

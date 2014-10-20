@@ -52,7 +52,7 @@
  				function(data /* Object: session data */) {
  					// hide/show DOM nodes
 
- 					BistriConference.startStream("1280×720:20", function() {
+ 					BistriConference.startStream("640×360:20", function() {
  						roomName = document.querySelector("#room-name").value;
  						BistriConference.joinRoom(roomName);
  						// hideShow( "#connecting", "#home" );
